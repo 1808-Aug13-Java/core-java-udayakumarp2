@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,16 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
+	   
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String string1 ="";
+		char[] strArray = string1.toCharArray();
+		for (int i = strArray.length -1; i >= 0; i--) {
+			string1+=strArray[i];
+		}
+		
+//		 TODO Write an implementation for this method declaration
+		return string1;
 	}
 
 	/**
@@ -26,9 +34,19 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
+	public String letters(String phrase) {
+		String[] words = phrase.split("\\s+");
+		String letters = "";
+		for (int i = 0; i < words.length; i++) {
+			letters+=(words[i].substring(0,1)).toUpperCase();
+		}
+		
+
+		return letters;
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		
+		
 	}
 
 	/**
@@ -276,51 +294,11 @@ public class EvaluationService {
 	 * 
 	 * @param l
 	 * @return
+	 punlic list<long> calculatePrimeNumberFactor
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
 		return null;
-	}
-
-	/**
-	 * 11. Create an implementation of the rotational cipher, also sometimes called
-	 * the Caesar cipher.
-	 * 
-	 * The Caesar cipher is a simple shift cipher that relies on transposing all the
-	 * letters in the alphabet using an integer key between 0 and 26. Using a key of
-	 * 0 or 26 will always yield the same output due to modular arithmetic. The
-	 * letter is shifted for as many values as the value of the key.
-	 * 
-	 * The general notation for rotational ciphers is ROT + <key>. The most commonly
-	 * used rotational cipher is ROT13.
-	 * 
-	 * A ROT13 on the Latin alphabet would be as follows:
-	 * 
-	 * Plain: abcdefghijklmnopqrstuvwxyz Cipher: nopqrstuvwxyzabcdefghijklm It is
-	 * stronger than the Atbash cipher because it has 27 possible keys, and 25
-	 * usable keys.
-	 * 
-	 * Ciphertext is written out in the same formatting as the input including
-	 * spaces and punctuation.
-	 * 
-	 * Examples: ROT5 omg gives trl ROT0 c gives c ROT26 Cool gives Cool ROT13 The
-	 * quick brown fox jumps over the lazy dog. gives Gur dhvpx oebja sbk whzcf bire
-	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
-	 * quick brown fox jumps over the lazy dog.
-	 */
-	static class RotationalCipher {
-		private int key;
-
-		public RotationalCipher(int key) {
-			super();
-			this.key = key;
-		}
-
-		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
-
 	}
 
 	/**
@@ -430,6 +408,12 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
+		 char[] chars = string.toLowerCase().toCharArray();
+		 HashSet<Character> letters = new HashSet<Character>();
+		    for(char c : chars) {
+		      if(Character.isLetter(c)) letters.add(c); 
+		    }
+		    if(letters.size() == 26) return true;
 		// TODO Write an implementation for this method declaration
 		return false;
 	}
@@ -462,7 +446,57 @@ public class EvaluationService {
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
 		// TODO Write an implementation for this method declaration
+	    HashSet<Integer> multiples = new HashSet<Integer>();
+		for(int k=1;k<i;k++) {
+			for(int numberCounter: set) {
+				if(k % numberCounter == 0) {
+					multiples.add(k);
+				}
+			}
+		 
+	 }
 		return 0;
+	}
+
+	/**
+	 * 11. Create an implementation of the rotational cipher, also sometimes called
+	 * the Caesar cipher.
+	 * 
+	 * The Caesar cipher is a simple shift cipher that relies on transposing all the
+	 * letters in the alphabet using an integer key between 0 and 26. Using a key of
+	 * 0 or 26 will always yield the same output due to modular arithmetic. The
+	 * letter is shifted for as many values as the value of the key.
+	 * 
+	 * The general notation for rotational ciphers is ROT + <key>. The most commonly
+	 * used rotational cipher is ROT13.
+	 * 
+	 * A ROT13 on the Latin alphabet would be as follows:
+	 * 
+	 * Plain: abcdefghijklmnopqrstuvwxyz Cipher: nopqrstuvwxyzabcdefghijklm It is
+	 * stronger than the Atbash cipher because it has 27 possible keys, and 25
+	 * usable keys.
+	 * 
+	 * Ciphertext is written out in the same formatting as the input including
+	 * spaces and punctuation.
+	 * 
+	 * Examples: ROT5 omg gives trl ROT0 c gives c ROT26 Cool gives Cool ROT13 The
+	 * quick brown fox jumps over the lazy dog. gives Gur dhvpx oebja sbk whzcf bire
+	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
+	 * quick brown fox jumps over the lazy dog.
+	 */
+	static class RotationalCipher {
+		private int key;
+	
+		public RotationalCipher(int key) {
+			super();
+			this.key = key;
+		}
+	
+		public String rotate(String string) {
+			// TODO Write an implementation for this method declaration
+			return null;
+		}
+	
 	}
 
 	/**
